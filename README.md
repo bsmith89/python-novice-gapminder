@@ -312,8 +312,262 @@ data.some_column.mean()
 -   My goal is to convince you to start replacing Excel with Python for
     analyses that you want to document and/or repeat.
 
+### Selecting Data ###
+
+
+--------
+
 ### [Challenge Question] ###
 
 How do you _write_ a csv?
 
-### Selecting Data ###
+
+## Repeating Actions with Loops ##
+
+### Motivation ###
+
+What if we want to print everything in `names`?
+
+```python
+print names
+
+print names[0]  # Newton
+print names[1]  # Turing
+print names[2]  # Darwin
+print names[3]  # Tesla
+print names[4]  # Einstein
+```
+
+That's kinda repetitive, and what happens if the length of the list is
+unknown before we run that code?
+
+There must be a better way.
+
+```python
+for some_name in names:
+    print some_name
+print "That's all of the names!"
+```
+
+### Anatomy of a loop ###
+
+### Counting things with loops ###
+
+### Accumulator pattern ###
+
+### Challenge question ###
+
+Exponentiation is built into Python:
+
+```python
+print 5 ** 3
+125
+```
+
+Write a loop that calculates the same result as 5 ** 3 using multiplication
+(and without exponentiation).
+
+
+### Booleans ###
+
+While `=` is the assignment operator, we often use it in common writing to mean
+"is equal to".
+
+In python, you ask the question "is x equal to y" with `x == y`.
+
+The value of that statement depends on the values of `x` and `y`.
+
+```python
+print 6 == 6
+
+x = 6
+y = 7
+z = '6'
+print x == y
+print x > y
+print x <= x
+```
+
+### Booleans logic: `and` and `or` ###
+
+```python
+print x == z
+print x == int(z)
+print (x == z) or (x == int(z))
+```
+
+### Anatomy of an If-statement ###
+
+```python
+num = 37
+if num > 100:
+    print 'greater than 100'
+else:
+    print 'not greater than 100'
+print 'done'
+```
+
+What if we want to do something else if `num` _is_ greater than 25?
+
+We _could_ do this:
+
+```python
+num = 37
+if num > 100:
+    print 'greater than 100'
+else:
+    if num > 25:
+        print 'greater than 25'
+    print 'not greater than 100'
+print 'done'
+```
+
+But this is messy and it's cleaner to use an `elif` block, which means
+the same thing.
+
+
+```python
+num = 37
+if num > 100:
+    print 'greater than 100'
+elif num > 25:
+    print 'greater than 25'
+else:
+    print 'not greater than 25'
+print 'done'
+```
+
+### Check your understanding ###
+
+What will be printed if you run this code? Why did you pick this answer?
+
+```python
+if 4 > 5:
+    print 'A'
+elif 4 == 5:
+    print 'B'
+elif 4 < 5:
+    print 'C'
+```
+
+## Writing Your Own Functions ##
+
+At this point we've used a few functions (called with parameters in parentheses).
+Python functions are kinda like mathematical functions.
+Given a set of inputs, they do something, and/or give back the output.
+One powerful way to use functions are as formulae.
+
+### Converting Temperature Units ###
+
+-   Encapsulation / `return`ing
+-   `int`s vs `float`s
+-   Composing functions
+-   Syntax errors
+-   Reading debug traces, debugging
+-   Calling a function with positional vs keyword arguments
+-   Why?
+
+### Challenge Question ###
+
+1.  Read the code below, and (without running it) try to identify what the
+    errors are.
+
+2.  Run the code, and read the error message. What type of NameError do you
+    think this is? In other words, is it a string with no quotes, a
+    misspelled variable, or a variable that should have been defined but
+    was not?
+
+3.  Fix the error.
+
+4.  Repeat steps 2 and 3, until you have fixed all the errors.
+
+```
+for number in range(10):
+    # use a if the number is a multiple of 3, otherwise use b
+    if (Number % 3) == 0:
+        message = message + a
+    else:
+        message = message + "b"
+print message
+```
+
+### Converting Temperature Units ###
+
+-   Encapsulation / `return`ing
+-   `int`s vs `float`s
+-   Composing functions
+-   Syntax errors
+-   Reading debug traces, debugging
+-   Calling a function with positional vs keyword arguments
+-   Why?
+
+### Challenge Question ###
+
+1.  Read the code below, and (without running it) try to identify what the
+    errors are.
+
+2.  Run the code, and read the error message. What type of NameError do you
+    think this is? In other words, is it a string with no quotes, a
+    misspelled variable, or a variable that should have been defined but
+    was not?
+
+3.  Fix the error.
+
+4.  Repeat steps 2 and 3, until you have fixed all the errors.
+
+```
+for number in range(10):
+    # use a if the number is a multiple of 3, otherwise use b
+    if (Number % 3) == 0:
+        message = message + a
+    else:
+        message = message + "b"
+print message
+```
+
+### Centering Data ###
+
+-   (Implicitly, introduce testing on a small dataset)
+-   Add a new argument to center on something other than 0
+-   Make that an optional argument
+
+### Challenge Question ###
+
+1.  Write a function rescale that takes an array as input and returns a
+    corresponding array of values scaled to lie in the range 0.0 to 1.0.
+
+    Hint: If L and H are the lowest and highest values in the original array,
+    then the replacement for a value v should be (v − L)/(H − L).
+
+    Be sure that this function has documentation.
+
+### Writing "Correct" Code ###
+
+-   Test on a dataset where we _know_ the answer
+-   Write unit tests
+    -   `if` statements are goood
+    -   But `assert` is made for this
+-   Check on state _while_ the program is running
+
+### Super-Duper Challenge Question ###
+
+1.  Re-write your rescale function to take optional 'a' and 'b' parameters
+    and rescales to that range.  Is the formula you came up with correct?
+
+2.  Write one unit test to check your answer.
+
+3.  Add one assert statement to your function to check intermediate state.
+
+## Writing your own module ##
+
+-   Put the center function into the module
+-   Import it
+
+## Writing a script ##
+
+-   Working with sys.argv
+-   Working with sys.stdin/stdout
+-   The software we use is NOT qualitatively different from the software you
+    are able to write.
+
+## Capstone? ##
